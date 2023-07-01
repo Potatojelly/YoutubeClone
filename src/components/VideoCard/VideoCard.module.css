@@ -1,0 +1,45 @@
+.videoCard {
+    width: 19%;
+    height: 100%;
+    background: blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.thumnail {
+    width:100%;
+    height: 55%;
+    background-color: black;
+}
+
+.detail {
+    width:100%;
+    height: 45%;
+    background-color: bisque;
+    display: flex;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    background-color: aquamarine;
+    border-radius: 100%;
+    margin: 0.5rem;
+}
+
+.title {
+    font-family: var(--text-main);
+    font-weight: bold;
+    color: var(--color-text);
+    word-break: break-all;
+    max-width: 180px;
+}
+
+.channel, .viewHour {
+    font-weight: light;
+    font-size: 0.9rem;
+    word-break: break-all;
+    max-width: 180px;
+    color: var(--color-text);
+}

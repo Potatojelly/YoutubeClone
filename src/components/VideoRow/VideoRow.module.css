@@ -1,0 +1,6 @@
+.videoRow {
+    display: flex;
+    justify-content: space-evenly;
+    height: 34%;
+    padding-bottom: 1rem;
+}
