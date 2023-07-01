@@ -1,0 +1,26 @@
+.searchBarContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchBar {
+    width: 400px;
+    height: 35px;
+    outline:none;
+    border: 1px solid grey;
+    border-radius: 8px 0 0 8px;
+    padding-left:0.5rem;
+}
+
+.searchBtn {
+    width: 40px;
+    height: 35px;
+    border: 1px solid grey;
+    border-radius: 0 8px 8px 0;
+    border-left: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-bg-dark);
+}

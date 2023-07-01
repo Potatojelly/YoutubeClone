@@ -1,0 +1,35 @@
+:root {
+  --color-bg: #RGB(238, 200, 189);
+  --color-bg-dark: RGB(248, 248, 248);
+  --color-grey: #d1d1d1;
+  --color-text: #22243b;
+
+  --text-main: "Open Sans", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  height:100vh;
+  width: 100vw;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+button {
+  border: none;
+  outline: none;
+  padding: 0;
+}
