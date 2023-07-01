@@ -11,7 +11,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 1rem;
+    margin-left: 1.2rem;
 }
 
 .toggle {
@@ -25,15 +25,11 @@
     font-size: 1.1rem;
 }
 
-.toggle:hover {
-    background-color: var(--color-grey);
-}
-
 .logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 0.8rem ;
+    margin-left: 1.5rem ;
     font-size: 1.3rem;
     font-weight: bold;
     color: var(--color-text);
@@ -49,3 +45,4 @@
     font-weight: bold;
     background-color: var(--color-bg-dark);
 }
+

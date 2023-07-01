@@ -1,9 +1,11 @@
 import React from 'react';
+import SideBar from '../SideBar/SideBar';
+import styles from './Home.module.css'
 
 export default function Home() {
     return (
-        <div>
-            Home
+        <div className={styles.home}>
+            <SideBar/>
         </div>
     );
 }

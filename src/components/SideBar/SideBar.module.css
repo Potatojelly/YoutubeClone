@@ -1,0 +1,17 @@
+.sideBar {
+    width: 60px;
+    height: 100%;
+    background-color: aqua;
+    padding:0.1rem;
+    transform: translateX(-60px);
+    transition: transform 250ms ease-in;
+
+}
+
+.sideBarOn {
+    transform: translateX(0px);
+}
+
+
+
+
