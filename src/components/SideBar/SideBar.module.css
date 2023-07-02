@@ -1,15 +1,16 @@
 .sideBar {
     width: 60px;
     height: 100%;
-    background-color: aqua;
+    background-color: rgb(106, 218, 218);
     padding:0.1rem;
     transform: translateX(-60px);
-    transition: transform 250ms ease-in;
-
+    transition: all 250ms ease-in;
+    width: 0;
 }
 
 .sideBarOn {
     transform: translateX(0px);
+    width: 60px;
 }
 
 

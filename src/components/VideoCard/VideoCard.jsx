@@ -3,7 +3,7 @@ import styles from './VideoCard.module.css'
 
 export default function VideoCard({video}) {
     const {title,channelTitle,publishedAt} = video.snippet;
-    const {url} = video.snippet.thumbnails.default;
+    const {url} = video.snippet.thumbnails.high;
     const {viewCount} = video.statistics;
     const date = getDateDiff(publishedAt);
     const views = getViews(viewCount);
@@ -15,7 +15,7 @@ export default function VideoCard({video}) {
                 <div className={styles.content}>
                     <p className={styles.title}>{title && title}</p>
                     <p className={styles.channel}>{channelTitle}</p>
-                    <p className={styles.viewHour}>{`${views} ${date}`}</p>
+                    <p className={styles.viewHour}>{`${views} • ${date}`}</p>
                 </div>
     
             </div>

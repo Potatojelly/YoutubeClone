@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import styles from './Video.module.css'
 import VideoRow from '../VideoRow/VideoRow';
 import {v4 as uuidv4} from "uuid";
+import { ToggleModeContext } from '../../contexts/ToggleModeContext';
 
 export default function Videos() {
     const obsRef = useRef(null);
@@ -14,6 +15,8 @@ export default function Videos() {
     const [end, setEnd] = useState(false); 
     const endRef = useRef(false); 
     const preventRef = useRef(true); 
+
+    const {click,handleToggleMode} = useContext(ToggleModeContext);
 
     const hanldeList = () => {
         console.log(list);
@@ -81,7 +84,7 @@ export default function Videos() {
 
 
     return (
-        <ul className={styles.videoContainer}>
+        <ul className={`${styles.videoContainer} ${click && styles.videoContainerOn}`}>
             {list && list.map((array)=><VideoRow key={uuidv4()} videos={array}/>)}
             {load && <li className="spinner"> Loading Spinner </li>}
             {!end && <li className='' ref={obsRef}> Observer </li>}
