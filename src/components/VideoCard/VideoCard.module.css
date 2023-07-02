@@ -1,21 +1,28 @@
 .videoCard {
     width: 19%;
     height: 100%;
-    background: blue;
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: all 250ms ease-in;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.videoCard:hover {
+    transform: scale(1.01);
+    cursor: pointer;
 }
 
 .thumnail {
     width:100%;
-    height: 55%;
-    background-color: black;
+    height: 65%;
+    object-fit: cover;
 }
 
 .detail {
     width:100%;
-    height: 45%;
+    height: 35%;
     background-color: bisque;
     display: flex;
 }
@@ -29,18 +36,23 @@
 }
 
 .title {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
     font-family: var(--text-main);
     font-weight: bold;
     color: var(--color-text);
-    word-break: keep-all;
-    max-width: 180px;
+    word-break: break-all;
+    max-width: 270px;
     font-size: 0.9rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .channel, .viewHour {
     font-weight: light;
     font-size: 0.9rem;
     word-break: break-all;
-    max-width: 180px;
+    max-width: 270px;
     color: var(--color-text);
 }

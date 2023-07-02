@@ -5,10 +5,10 @@ import Video from '../Video/Video';
 
 export default function Home() {
     return (
-        <div className={styles.home}>
+        <section className={styles.home}>
             <SideBar/>
             <Video/>
-        </div>
+        </section>
     );
 }
 

@@ -13,11 +13,10 @@ export default function VideoCard({video}) {
             <div className={styles.detail}>
                 <div className={styles.logo}></div>
                 <div className={styles.content}>
-                    <p className={styles.title}>{title && title}</p>
+                    <p className={styles.title}>{title}</p>
                     <p className={styles.channel}>{channelTitle}</p>
-                    <p className={styles.viewHour}>{`${views} • ${date}`}</p>
+                    <p className={styles.viewHour}>{`${date} • ${views}`}</p>
                 </div>
-    
             </div>
         </div>
     );

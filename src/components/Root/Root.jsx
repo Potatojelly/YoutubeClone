@@ -4,6 +4,7 @@ import Navbar from '../Navbar/Navbar';
 import styles from './Root.module.css';
 import ToggleModeProvider from '../../contexts/ToggleModeContext';
 
+
 export default function Root() {
     return (
         <div className={styles.root}>

@@ -1,9 +1,14 @@
 .videoContainer {
     width:100%;
     height:100%;
-    overflow-y: auto;
+    min-height: 0;
     padding: 1rem;
     background-color: rgb(224, 224, 96);
     flex-grow: 1;
 }
 
+.observer {
+    width: 100%;
+    height: 200px;
+    background-color: black;
+}
