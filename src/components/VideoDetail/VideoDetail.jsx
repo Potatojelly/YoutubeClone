@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './VideoDetail.module.css'
+import Comment from '../Comment/Comment';
 import { useLocation, useParams } from 'react-router-dom';
 import {AiOutlineLike, AiOutlineDislike} from "react-icons/ai";
 import {MdSort} from "react-icons/md";
@@ -10,6 +11,7 @@ import {v4 as uuidv4} from "uuid";
 export default function VideoDetail() {
     const {state: {video}} = useLocation();
     const [obsRef,list,load] = useInfiniteScroll("related");
+    const [commentObsRef,commentList,commentLoad] = useInfiniteScroll("comments");
     return (
         <section className={styles.container}>
             <div className={styles.videoContainer}>
@@ -53,7 +55,9 @@ export default function VideoDetail() {
                         <span>comments num</span>
                         <button style={{marginLeft:"0.5rem"}}><MdSort/>Sort by</button>
                     </div>
-                    comments
+                    {commentList && commentList.map((item,index)=><Comment key={uuidv4()} comment={item}/>)}
+                    {commentLoad && <li className="spinner"> Loading Spinner </li>}
+                    {<div ref={commentObsRef}> Observer </div>}
                 </div>
             </div>
             <div className={styles.sideBar}>

@@ -1,0 +1,66 @@
+.container {
+    width: 100%;
+    background-color: plum;
+    display: flex;
+
+}
+
+.profileImg {
+    width: 45px;
+    height: 45px;
+    background-color: antiquewhite;
+    border-radius: 100%;
+    margin-top:0.3rem;
+}
+
+.commentContainer {
+    margin-left: 0.5rem;
+}
+
+.userName {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.hour {
+    font-size: 0.8rem;
+    font-weight: lighter;
+    margin-left: 0.3rem;
+}
+
+.comment {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: break-all;
+    max-width: 400px;
+}
+
+.readMore {
+    -webkit-line-clamp: initial;
+}
+.readMoreBtn {
+    font-weight: bold;
+    color: grey;
+    background-color: transparent;
+}
+
+.btnContainer {
+    display: flex;
+}
+
+.likeBtn {
+    width: 55px;
+    height:25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+.dislikeBtn {
+    width: 30px;
+    height:25px;
+    background-color: transparent;
+}

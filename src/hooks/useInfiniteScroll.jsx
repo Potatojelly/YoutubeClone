@@ -24,7 +24,16 @@ export default function useInfiniteScroll(action) {
     const getPost = useCallback(()=> { 
         setLoad(true);
         //fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&chart=mostPopular&maxResults=50&pageToken=${nextPageToken}&key=`)
-        fetch("../../videos/popular.json")    
+        if(action === "comments") {
+            fetch("../../videos/comments.json")    
+            .then(response => response.json())
+            .then((data) => {
+                const temp = data.items.filter((item,index)=> index<5 &&item);
+                setList((prev)=>[...prev, ...temp]);
+            })
+            .finally(()=>setLoad(false));
+        } else {
+            fetch("../../videos/popular.json")    
             .then(response => response.json())
             .then((data) => {
                 switch (action) {
@@ -56,6 +65,7 @@ export default function useInfiniteScroll(action) {
                 }
             })
             .finally(()=>setLoad(false));
+        }
     },[page]);
 
     useEffect(()=> { 

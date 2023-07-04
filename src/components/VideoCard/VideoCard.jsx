@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function VideoCard({video}) {
     const {id} = video.id;
-    const {title,channelTitle,publishedAt,Id} = video.snippet;
+    const {title,channelTitle,publishedAt} = video.snippet;
     const {url} = video.snippet.thumbnails.high;
     const {viewCount} = video.statistics;
     const date = getDateDiff(publishedAt);
