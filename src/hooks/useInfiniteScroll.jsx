@@ -44,6 +44,12 @@ export default function useInfiniteScroll(action) {
                         //nextPageToken = data.nextPageToken;
                         break;
                     }
+                    case "related": {
+                        const temp = data.items.filter((item,index)=> index<5 &&item);
+                        setList((prev)=>[...prev, ...temp]);
+                        //nextPageToken = data.nextPageToken;
+                        break;
+                    }
                     default: {
             
                     }

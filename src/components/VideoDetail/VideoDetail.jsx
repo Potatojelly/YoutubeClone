@@ -3,9 +3,13 @@ import styles from './VideoDetail.module.css'
 import { useLocation, useParams } from 'react-router-dom';
 import {AiOutlineLike, AiOutlineDislike} from "react-icons/ai";
 import {MdSort} from "react-icons/md";
+import RelatedVideoCard from '../RelatedVideoCard/RelatedVideoCard';
+import useInfiniteScroll from '../../hooks/useInfiniteScroll';
+import {v4 as uuidv4} from "uuid";
 
 export default function VideoDetail() {
     const {state: {video}} = useLocation();
+    const [obsRef,list,load] = useInfiniteScroll("related");
     return (
         <section className={styles.container}>
             <div className={styles.videoContainer}>
@@ -16,7 +20,7 @@ export default function VideoDetail() {
                     height="390"
                     src= {`http://www.youtube.com/embed/${video.id}`}
                     frameborder="0"
-                    title=""
+                    title="youtubeVideo"
                 />
                 <h1>
                 title
@@ -53,7 +57,12 @@ export default function VideoDetail() {
                 </div>
             </div>
             <div className={styles.sideBar}>
-                sidebarlist
+                <span className={styles.sideBarTitle}>Related Videos</span>
+                <ul>
+                    {list && list.map((item,index)=><RelatedVideoCard key={uuidv4()} video={item}/>)}
+                    {load && <li className="spinner"> Loading Spinner </li>}
+                    {<div ref={obsRef}> Observer </div>}
+                </ul>
             </div>
         </section>
     );

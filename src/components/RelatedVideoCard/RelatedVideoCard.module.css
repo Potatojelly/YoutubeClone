@@ -1,0 +1,40 @@
+.videoCard {
+    display: flex;
+    margin: 1rem 1rem;
+}
+
+.videoImg {
+    background-color: blue;
+    width: 45%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.videoDetails {
+    background-color: pink;
+    width: 55%;
+    height: 120px;
+    padding: 0 0.5rem;
+}
+
+.title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.viewHour, .channelTitle {
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.8rem;
+    font-weight: lighter;
+}
+
