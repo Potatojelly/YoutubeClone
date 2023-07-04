@@ -3,6 +3,7 @@ import './App.css';
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from './components/Root/Root';
 import Home from './components/Home/Home';
+import VideoSearchPage from './components/VideoSearchPage/VideoSearchPage';
 
 const router = createBrowserRouter([
   {
@@ -10,6 +11,8 @@ const router = createBrowserRouter([
     element: <Root/>,
     children: [
       {index: true, element: <Home/>},
+      {path: "/videos", element: <Home/>},
+      {path: "/videos/:videoId", element: <VideoSearchPage/>},
     ]
   },
 ]);

@@ -4,7 +4,7 @@ import VideoRow from '../VideoRow/VideoRow';
 import {v4 as uuidv4} from "uuid";
 import { ToggleModeContext } from '../../contexts/ToggleModeContext';
 
-export default function Videos() {
+export default function Video() {
     const obsRef = useRef(null);
     const [list, setList] = useState([]);	
     const [page, setPage] = useState(1); 
