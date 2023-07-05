@@ -23,6 +23,7 @@ export default function Navbar() {
                 </Link>
             </div>
             <SearchBar/>
+            <div></div>
         </nav>
     );
 }

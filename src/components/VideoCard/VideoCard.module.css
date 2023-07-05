@@ -1,5 +1,6 @@
 .videoCard {
     width: 19%;
+    min-width: 18%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -16,7 +17,8 @@
 
 .thumnail {
     width:100%;
-    height: 65%;
+    height: 60%;
+    border-radius: 8px;
     object-fit: cover;
 }
 

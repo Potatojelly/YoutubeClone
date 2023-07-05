@@ -1,8 +1,14 @@
-.videoContainer {
+.videoSection {
     width:100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.videoContainer {
     height:100%;
     min-height: 0;
     padding: 1rem;
     background-color: var(--color-bg);
-    flex-grow: 1;
 }
