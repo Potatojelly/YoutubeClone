@@ -9,8 +9,10 @@ export default function SideBar() {
     const {click,handleToggleMode} = useContext(ToggleModeContext);
     return (
         <div className={`${styles.sideBar} ${click && styles.sideBarOn}`}>
+            <div style={{position:"sticky", top:"50px"}}>
             <SideBarBtn image={<HiHome/>} name="Home"/>
             <SideBarBtn image={<BsSunFill/>} name="Light Mode"/>
+            </div>
         </div>
     );
 }

@@ -1,9 +1,9 @@
 :root {
-  --color-bg: #RGB(238, 200, 189);
+  --color-bg: RGB(255, 255, 255);
   --color-bg-dark: RGB(248, 248, 248);
   --color-grey: #d1d1d1;
   --color-text: #22243b;
-  --color-accent: RGB(68, 70, 84);
+  --color-accent: RGB(242, 242, 242);
 
   --text-main: "Open Sans", sans-serif;
 }
@@ -13,8 +13,6 @@
 }
 
 #root {
-  width: 100vw;
-  height: 100vh;
   font-family: var(--text-main);
 }
 

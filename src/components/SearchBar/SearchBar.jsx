@@ -6,9 +6,11 @@ import { useNavigate } from 'react-router-dom';
 export default function SearchBar() {
     const [text,setText] = useState("");
     const navigate = useNavigate();
+
     const handleChange = (e) => {
         setText(e.target.value);
     }
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         setText("");

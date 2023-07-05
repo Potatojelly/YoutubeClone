@@ -1,19 +1,17 @@
 
 .videoCard {
-    background-color: orange;
     display: flex;
+    width: 50%;
     margin: 1rem 1rem;
 }
 
 .videoImg {
-    background-color: blue;
     width: 350px;
     height: 220px;
     object-fit: cover;
 }
 
 .videoDetails {
-    background-color: pink;
     width: 700px;
     height: 220px;
     padding: 1.5rem 1rem;

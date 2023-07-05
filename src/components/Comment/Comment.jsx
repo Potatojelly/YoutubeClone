@@ -1,31 +1,49 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import styles from './Comment.module.css'
 import {AiOutlineLike, AiOutlineDislike} from "react-icons/ai";
+import getDateDiff from '../../common/getDateDiff';
 
 const Comment = ({comment},ref) => {
     const commentRef = useRef(null);
-    const {textOriginal} = comment.snippet.topLevelComment.snippet;
-    console.log(textOriginal);
+    const {textOriginal,authorDisplayName,authorProfileImageUrl,likeCount,publishedAt} = comment.snippet.topLevelComment.snippet;
+    const [commentText,setCommentText] = useState([]);
+    const [shouldShowReadMoreButton,setShouldShowReadMoreButton] = useState(false);
     const [show,setShow] = useState(false);
+    const date = getDateDiff(publishedAt);
     const handleClick = () => {
         setShow(!show);
     }
-    const shouldShowReadMoreButton = textOriginal.split('\n').length >= 5;
+
+    useEffect(()=>{
+        setCommentText(textOriginal.split('\n'));
+    },[]);
+
+    useEffect(()=>{
+        setShouldShowReadMoreButton(textOriginal.split('\n').length >= 5);
+    },[]);
+
     return (
         <div className={styles.container} ref={ref}>
-            <div className={styles.profileImg}></div>
+            <img 
+                src={authorProfileImageUrl}
+                alt="userProfile" 
+                className={styles.profileImg}
+                style={{objectFit:"contain"}}
+            />
             <div className={styles.commentContainer}>
-                <span className={styles.userName}>username</span>
-                <span className={styles.hour}>hour</span>
-                <p ref={commentRef} className={`${styles.comment} ${show && styles.readMore}`}>
-                    {textOriginal}
+                <span className={styles.userName}>{authorDisplayName}</span>
+                <span className={styles.hour}>{date}</span>
+                <div ref={commentRef}>
+                    <div className={`${styles.comment} ${show && styles.readMore}`}>
+                        {commentText.map((item,index)=><p key={index}>{item}</p>)}
+                    </div>
                     {shouldShowReadMoreButton && 
-                        <button className={styles.readMoreBtn} onClick={handleClick}>
-                            Read more
-                        </button>}
-                </p>
+                    <span className={styles.readMoreBtn} onClick={handleClick}>
+                        {!show ? "Read more" : "Show less"}
+                    </span>}
+                </div>
                 <div className={styles.btnContainer}>
-                    <button className={styles.likeBtn}><AiOutlineLike style={{fontSize:"1.2rem"}}/> <span>nums</span></button>
+                    <button className={styles.likeBtn}><AiOutlineLike style={{fontSize:"1.2rem"}}/> <span>{likeCount}</span></button>
                     <button className={styles.dislikeBtn}><AiOutlineDislike style={{fontSize:"1.2rem"}}/></button>
                 </div>
             </div>

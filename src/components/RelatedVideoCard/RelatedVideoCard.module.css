@@ -4,14 +4,12 @@
 }
 
 .videoImg {
-    background-color: blue;
-    width: 45%;
-    height: 120px;
+    width: 85%;
+    height: 110px;
     object-fit: cover;
 }
 
 .videoDetails {
-    background-color: pink;
     width: 55%;
     height: 120px;
     padding: 0 0.5rem;

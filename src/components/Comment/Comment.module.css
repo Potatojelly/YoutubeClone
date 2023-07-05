@@ -1,6 +1,6 @@
 .container {
+    margin-top: 1rem;
     width: 100%;
-    background-color: plum;
     display: flex;
 
 }
@@ -8,7 +8,6 @@
 .profileImg {
     width: 45px;
     height: 45px;
-    background-color: antiquewhite;
     border-radius: 100%;
     margin-top:0.3rem;
 }
@@ -41,10 +40,15 @@
     -webkit-line-clamp: initial;
 }
 .readMoreBtn {
+    display: block;
     font-weight: bold;
-    color: grey;
+    color: black;
     background-color: transparent;
+    font-size: 0.8rem;
+    text-decoration:underline;
+    cursor: pointer;
 }
+
 
 .btnContainer {
     display: flex;

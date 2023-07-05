@@ -1,16 +1,16 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import React from 'react';
 import styles from './Video.module.css'
 import VideoRow from '../VideoRow/VideoRow';
 import {v4 as uuidv4} from "uuid";
-import { ToggleModeContext } from '../../contexts/ToggleModeContext';
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
+import { MoonLoader } from 'react-spinners';
+
 
 export default function Video() {
     const [list,loading,lastElementRef] = useInfiniteScroll("main");
-    const {click,handleToggleMode} = useContext(ToggleModeContext);
 
     return (
-        <ul className={`${styles.videoContainer} ${click && styles.videoContainerOn}`}>
+        <ul className={styles.videoContainer}>
             {list && list.map((array,index)=> {
                 if(list.length === index + 1) {
                     return <VideoRow key={uuidv4()} videos={array} ref={lastElementRef}/>
@@ -18,7 +18,12 @@ export default function Video() {
                     return <VideoRow key={uuidv4()} videos={array}/>
                 }
             })}
-            {loading && <li className="spinner"> Loading Spinner </li>}
+            {loading &&
+            <div style={{display:"flex", justifyContent:"center"}}>
+                <MoonLoader color="rgba(255, 5, 5, 1)"/>
+            </div>}
         </ul>
     );
 }
+
+

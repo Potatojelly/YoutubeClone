@@ -23,7 +23,7 @@
 .detail {
     width:100%;
     height: 35%;
-    background-color: bisque;
+    background-color: var(--color-bg);
     display: flex;
 }
 

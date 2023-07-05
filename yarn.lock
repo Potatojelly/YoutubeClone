@@ -10863,6 +10863,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-loading@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "react-loading@npm:2.0.3"
+  peerDependencies:
+    prop-types: ^15.6.0
+    react: ">=0.14.0"
+  checksum: a2b24b94c1988c1418a3d714c5d95dd13407f43e6ac59f350ae54ad75dd613bfea0abb59c8530900821806b72596e57555a700f9541bd12d9ac88387cce919fa
+  languageName: node
+  linkType: hard
+
 "react-query@npm:^3.39.3":
   version: 3.39.3
   resolution: "react-query@npm:3.39.3"
@@ -10976,6 +10986,16 @@ __metadata:
   bin:
     react-scripts: bin/react-scripts.js
   checksum: 92afa2f245c7092ccc97d5609dc7a2130616262e34da7f15072d9442e2d2e1d4909a91022abd1faac1336eb17c5525a10d9bd43e1ae374c7ec941ca20addca68
+  languageName: node
+  linkType: hard
+
+"react-spinners@npm:^0.13.8":
+  version: 0.13.8
+  resolution: "react-spinners@npm:0.13.8"
+  peerDependencies:
+    react: ^16.0.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: cb58f916bbf00c4f7fc33c1a75a8c0f91a98a42af26944340a0e29e4b3a97937a03f0292bc444eb5f5f0bea099344b580f9c04a81524246dadbf0571bdb57e62
   languageName: node
   linkType: hard
 
@@ -13478,9 +13498,11 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     react-icons: ^4.10.1
+    react-loading: ^2.0.3
     react-query: ^3.39.3
     react-router-dom: ^6.14.1
     react-scripts: 5.0.1
+    react-spinners: ^0.13.8
     web-vitals: ^2.1.0
   languageName: unknown
   linkType: soft
