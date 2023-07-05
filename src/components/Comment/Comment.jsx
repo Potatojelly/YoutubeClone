@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import styles from './Comment.module.css'
 import {AiOutlineLike, AiOutlineDislike} from "react-icons/ai";
 
-export default function Comment({comment}) {
+const Comment = ({comment},ref) => {
     const commentRef = useRef(null);
     const {textOriginal} = comment.snippet.topLevelComment.snippet;
     console.log(textOriginal);
@@ -12,7 +12,7 @@ export default function Comment({comment}) {
     }
     const shouldShowReadMoreButton = textOriginal.split('\n').length >= 5;
     return (
-        <div className={styles.container}>
+        <div className={styles.container} ref={ref}>
             <div className={styles.profileImg}></div>
             <div className={styles.commentContainer}>
                 <span className={styles.userName}>username</span>
@@ -32,4 +32,6 @@ export default function Comment({comment}) {
         </div>
     );
 }
+
+export default forwardRef(Comment);
 

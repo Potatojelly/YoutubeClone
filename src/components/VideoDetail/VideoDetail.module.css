@@ -137,6 +137,7 @@ iframe {
 
 .sideBar {
     width: 380px;
+    height: 830px;
     background-color: orchid;
     overflow-y: auto;
 }

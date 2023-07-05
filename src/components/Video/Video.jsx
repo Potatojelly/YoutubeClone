@@ -6,57 +6,32 @@ import { ToggleModeContext } from '../../contexts/ToggleModeContext';
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 
 export default function Video() {
-    // const obsRef = useRef(null);
-    // const [list, setList] = useState([]);	
-    // const [page, setPage] = useState(1); 
-    // const [load, setLoad] = useState(false); 
-    const [obsRef,list,load] = useInfiniteScroll("main");
+    const [pageNumber, setPageNumber] = useState(1);
+    const [list,loading] = useInfiniteScroll("main",pageNumber);
+    const observer= useRef();
     const {click,handleToggleMode} = useContext(ToggleModeContext);
 
-    // console.log(list.length);
-    // let nextPageToken = '';
-
-
-    // useEffect(()=> { 
-    //     const observer = new IntersectionObserver(obsHandler, { threshold : 1 });
-    //     if(obsRef.current) observer.observe(obsRef.current);
-    //     return () => { observer.disconnect(); }
-    // }, []);
-
-    // const obsHandler = ((entries) => { 
-    //     const target = entries[0];
-    //     if(target.isIntersecting){ 
-    //         setPage((prev) => prev+1 ); 
-    //     }
-    // });
-
-    // const getPost = useCallback(()=> { 
-    //     setLoad(true);
-    //     //fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&chart=mostPopular&maxResults=50&pageToken=${nextPageToken}&key=`)
-    //     fetch("../../videos/popular.json")    
-    //         .then(response => response.json())
-    //         .then((data) => {
-    //             const transformedData = data.items.reduce((result, value, index, array) => {
-    //                 if (index % 5 === 0)
-    //                     result.push(array.slice(index, index + 5));
-    //                 return result;
-    //             },[]);
-    //             setList((prev)=>[...prev, ...transformedData])
-    //             //nextPageToken = data.nextPageToken;
-    //         })
-    //         .finally(()=>setLoad(false));
-    // },[page]);
-
-    // useEffect(()=> { 
-    //     getPost();
-    // }, [getPost]);
-
+    const lastElementRef = useCallback(node=> {
+        if(loading) return;
+        if(observer.current)  observer.current.disconnect();
+        observer.current = new IntersectionObserver(entries=>{
+            if(entries[0].isIntersecting) {
+                setPageNumber(prev => prev + 1)
+            }
+        },{threshold: 0.5});
+        if(node) observer.current.observe(node);
+    },[loading]);
 
     return (
         <ul className={`${styles.videoContainer} ${click && styles.videoContainerOn}`}>
-            {list && list.map((array,index)=><VideoRow key={uuidv4()} videos={array}/>)}
-            {load && <li className="spinner"> Loading Spinner </li>}
-            {<div ref={obsRef}> Observer </div>}
+            {list && list.map((array,index)=> {
+                if(list.length === index + 1) {
+                    return <VideoRow key={uuidv4()} videos={array} ref={lastElementRef}/>
+                } else {
+                    return <VideoRow key={uuidv4()} videos={array}/>
+                }
+            })}
+            {loading && <li className="spinner"> Loading Spinner </li>}
         </ul>
     );
 }

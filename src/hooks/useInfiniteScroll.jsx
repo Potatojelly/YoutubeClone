@@ -1,28 +1,12 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
-export default function useInfiniteScroll(action) {
-    const obsRef = useRef(null);
+export default function useInfiniteScroll(action, page) {
     const [list, setList] = useState([]);	
-    const [page, setPage] = useState(1); 
-    const [load, setLoad] = useState(false); 
-
+    const [loading, setLoading] = useState(false); 
 
     useEffect(()=> { 
-        const observer = new IntersectionObserver(obsHandler, { threshold : 1 }); 
-        if(obsRef.current) observer.observe(obsRef.current);
-        return () => { observer.disconnect(); }
-    }, []);
-
-    const obsHandler = ((entries) => { 
-        const target = entries[0];
-        if(target.isIntersecting){ 
-            setPage((prev) => prev+1 ); 
-        }
-    });
-
-    const getPost = useCallback(()=> { 
-        setLoad(true);
+        setLoading(true);
         //fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&chart=mostPopular&maxResults=50&pageToken=${nextPageToken}&key=`)
         if(action === "comments") {
             fetch("../../videos/comments.json")    
@@ -31,7 +15,7 @@ export default function useInfiniteScroll(action) {
                 const temp = data.items.filter((item,index)=> index<5 &&item);
                 setList((prev)=>[...prev, ...temp]);
             })
-            .finally(()=>setLoad(false));
+            .finally(()=>setLoading(false));
         } else {
             fetch("../../videos/popular.json")    
             .then(response => response.json())
@@ -64,13 +48,9 @@ export default function useInfiniteScroll(action) {
                     }
                 }
             })
-            .finally(()=>setLoad(false));
+            .finally(()=>setLoading(false));
         }
     },[page]);
 
-    useEffect(()=> { 
-        getPost();
-    }, [getPost]);
-
-    return [obsRef,list,load];
+    return [list,loading];
 }

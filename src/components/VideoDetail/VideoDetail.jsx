@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import styles from './VideoDetail.module.css'
 import Comment from '../Comment/Comment';
 import { useLocation, useParams } from 'react-router-dom';
@@ -10,8 +10,36 @@ import {v4 as uuidv4} from "uuid";
 
 export default function VideoDetail() {
     const {state: {video}} = useLocation();
-    const [obsRef,list,load] = useInfiniteScroll("related");
-    const [commentObsRef,commentList,commentLoad] = useInfiniteScroll("comments");
+    const [relatedVideoPage,setRelatedVideoPage] = useState(1);
+    const [commentPage,setCommentPage] = useState(1);
+    const [relatedVideolist,relatedVideoloading] = useInfiniteScroll("related",relatedVideoPage);
+    const [commentList,commentloading] = useInfiniteScroll("comments",commentPage);
+
+    const videoObserver = useRef();
+    const commentObserver = useRef();
+
+    const lastVideoRef = useCallback(node => {
+        if(relatedVideoloading) return;
+        if(videoObserver.current) videoObserver.current.disconnect();
+        videoObserver.current = new IntersectionObserver(entries => {
+            if(entries[0].isIntersecting) {
+                setRelatedVideoPage(prev => prev + 1);
+            }
+        },{threshold:0.5});
+        if(node) videoObserver.current.observe(node);
+    },[relatedVideoloading]); 
+
+    const lastCommentRef = useCallback(node => {
+        if(commentloading) return;
+        if(commentObserver.current) commentObserver.current.disconnect();
+        commentObserver.current = new IntersectionObserver(entries => {
+            if(entries[0].isIntersecting) {
+                setCommentPage(prev => prev + 1);
+            }
+        },{threshold:0.5});
+        if(node) commentObserver.current.observe(node);
+    },[commentloading]); 
+
     return (
         <section className={styles.container}>
             <div className={styles.videoContainer}>
@@ -55,17 +83,27 @@ export default function VideoDetail() {
                         <span>comments num</span>
                         <button style={{marginLeft:"0.5rem"}}><MdSort/>Sort by</button>
                     </div>
-                    {commentList && commentList.map((item,index)=><Comment key={uuidv4()} comment={item}/>)}
-                    {commentLoad && <li className="spinner"> Loading Spinner </li>}
-                    {<div ref={commentObsRef}> Observer </div>}
+                    {commentList && commentList.map((item,index)=> {
+                        if(index === commentList.length - 1) {
+                            return <Comment key={uuidv4()} comment={item} ref={lastCommentRef}/>
+                        } else {
+                            return <Comment key={uuidv4()} comment={item}/>
+                        }
+                    })}
+                    {commentloading && <li className="spinner"> Loading Spinner </li>}
                 </div>
             </div>
             <div className={styles.sideBar}>
                 <span className={styles.sideBarTitle}>Related Videos</span>
                 <ul>
-                    {list && list.map((item,index)=><RelatedVideoCard key={uuidv4()} video={item}/>)}
-                    {load && <li className="spinner"> Loading Spinner </li>}
-                    {<div ref={obsRef}> Observer </div>}
+                    {relatedVideolist && relatedVideolist.map((item,index)=> {
+                        if(index === relatedVideolist.length - 1) {
+                            return <RelatedVideoCard key={uuidv4()} video={item} ref={lastVideoRef}/>
+                        } else {
+                            return <RelatedVideoCard key={uuidv4()} video={item}/>
+                        }
+                    })}
+                    {relatedVideoloading && <li className="spinner"> Loading Spinner </li>}
                 </ul>
             </div>
         </section>
