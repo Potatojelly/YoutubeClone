@@ -6,21 +6,8 @@ import { ToggleModeContext } from '../../contexts/ToggleModeContext';
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 
 export default function Video() {
-    const [pageNumber, setPageNumber] = useState(1);
-    const [list,loading] = useInfiniteScroll("main",pageNumber);
-    const observer= useRef();
+    const [list,loading,lastElementRef] = useInfiniteScroll("main");
     const {click,handleToggleMode} = useContext(ToggleModeContext);
-
-    const lastElementRef = useCallback(node=> {
-        if(loading) return;
-        if(observer.current)  observer.current.disconnect();
-        observer.current = new IntersectionObserver(entries=>{
-            if(entries[0].isIntersecting) {
-                setPageNumber(prev => prev + 1)
-            }
-        },{threshold: 0.5});
-        if(node) observer.current.observe(node);
-    },[loading]);
 
     return (
         <ul className={`${styles.videoContainer} ${click && styles.videoContainerOn}`}>

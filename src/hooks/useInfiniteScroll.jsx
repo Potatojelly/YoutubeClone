@@ -1,9 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 
-export default function useInfiniteScroll(action, page) {
+export default function useInfiniteScroll(action) {
     const [list, setList] = useState([]);	
     const [loading, setLoading] = useState(false); 
+    const [pageNumber, setPageNumber] = useState(1);
+    const observer= useRef();
+    const lastElementRef = useCallback(node=> {
+        if(loading) return;
+        if(observer.current)  observer.current.disconnect();
+        observer.current = new IntersectionObserver(entries=>{
+            if(entries[0].isIntersecting) {
+                setPageNumber(prev => prev + 1)
+            }
+        },{threshold: 0.5});
+        if(node) observer.current.observe(node);
+    },[loading]);
 
     useEffect(()=> { 
         setLoading(true);
@@ -50,7 +62,7 @@ export default function useInfiniteScroll(action, page) {
             })
             .finally(()=>setLoading(false));
         }
-    },[page]);
+    },[pageNumber]);
 
-    return [list,loading];
+    return [list,loading,lastElementRef];
 }
