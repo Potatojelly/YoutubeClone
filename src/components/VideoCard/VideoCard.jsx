@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styles from './VideoCard.module.css'
 import getDateDiff from '../../common/getDateDiff';
 import getViews from '../../common/getViews';
 import { useNavigate } from 'react-router-dom';
 
-export default function VideoCard({video}) {
+
+const VideoCard = ({video},ref) => {
     const {id} = video.id;
     const {title,channelTitle,publishedAt} = video.snippet;
     const {url} = video.snippet.thumbnails.high;
@@ -17,7 +18,7 @@ export default function VideoCard({video}) {
         navigate(`/videos/watch/${id}`, {state: {video}});
     }
     return (
-        <div className={styles.videoCard} onClick={watchVideo}>
+        <div className={styles.videoCard} onClick={watchVideo} ref={ref}>
             <img src={url} alt="thumnail" className={styles.thumnail}/>
             <div className={styles.detail}>
                 <div className={styles.logo}></div>
@@ -30,5 +31,7 @@ export default function VideoCard({video}) {
         </div>
     );
 };
+
+export default forwardRef(VideoCard);
 
 

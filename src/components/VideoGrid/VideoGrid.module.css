@@ -1,0 +1,30 @@
+.videoGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    grid-template-rows: repeat(3, 300px);
+    gap: 10px;
+}
+
+@media (max-width: 1800px) {
+    .videoGrid {
+        grid-template-columns: repeat(4, 25%);
+    }
+}
+
+@media (max-width: 1500px) {
+    .videoGrid {
+        grid-template-columns: repeat(3, 33%);
+    }
+}
+
+@media (max-width: 1200px) {
+    .videoGrid {
+        grid-template-columns: repeat(2, 50%);
+    }
+}
+
+@media (max-width: 750px) {
+    .videoGrid {
+        grid-template-columns: repeat(1, 100%);
+    }
+}

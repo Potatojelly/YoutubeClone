@@ -7,7 +7,6 @@ export default function ToggleModeProvider({children}) {
     const handleToggleMode = () => {
         setClick((prev) => !prev);
     }
-
     return (
         <ToggleModeContext.Provider value={{click,handleToggleMode}}>
             {children}

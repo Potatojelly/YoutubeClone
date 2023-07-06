@@ -4,14 +4,14 @@
 }
 
 .videoImg {
-    width: 85%;
-    height: 110px;
+    width: 150px;
+    height: 90px;
     object-fit: cover;
 }
 
 .videoDetails {
     width: 55%;
-    height: 120px;
+    height: 90px;
     padding: 0 0.5rem;
 }
 

@@ -47,6 +47,7 @@
     font-size: 0.8rem;
     text-decoration:underline;
     cursor: pointer;
+    color: var(--color-text);
 }
 
 
@@ -61,10 +62,12 @@
     justify-content: center;
     align-items: center;
     background-color: transparent;
+    color: var(--color-text);
 }
 
 .dislikeBtn {
     width: 30px;
     height:25px;
     background-color: transparent;
+    color: var(--color-text);
 }

@@ -1,8 +1,7 @@
 .sideBar {
-    background-color: var(--color-bg);
-    padding:0.1rem;
     transform: translateX(-60px);
-    transition: all 300ms ease-in;
+    background-color: var(--color-bg);
+    transition: transform 300ms ease-in;
     width: 0;
 }
 
@@ -10,6 +9,15 @@
     transform: translateX(0px);
     width: 60px;
 }
+
+.btnContainer {
+    width: 60px;
+    position:sticky;
+    top:48px;
+    height: 100vh;
+    background-color: var(--color-bg);
+}
+
 
 
 

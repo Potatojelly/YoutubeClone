@@ -13,7 +13,7 @@ export default function useInfiniteScroll(action) {
             if(entries[0].isIntersecting) {
                 setPageNumber(prev => prev + 1)
             }
-        },{threshold: 0.5});
+        },{threshold: 0.8});
         if(node) observer.current.observe(node);
     },[loading]);
 
@@ -24,7 +24,8 @@ export default function useInfiniteScroll(action) {
             fetch("../../videos/comments.json")    
             .then(response => response.json())
             .then((data) => {
-                const temp = data.items.filter((item,index)=> index<5 &&item);
+                console.log("comment call!");
+                const temp = data.items.filter((item,index)=> index<30 &&item);
                 setList((prev)=>[...prev, ...temp]);
             })
             .finally(()=>setLoading(false));
@@ -34,12 +35,17 @@ export default function useInfiniteScroll(action) {
             .then((data) => {
                 switch (action) {
                     case "main" :{
-                        const transformedData = data.items.reduce((result, value, index, array) => {
-                            if (index % 5 === 0)
-                                result.push(array.slice(index, index + 5));
-                            return result;
-                        },[]);
-                        setList((prev)=>[...prev, ...transformedData]);
+                        // const transformedData = data.items.reduce((result, value, index, array) => {
+                        //     if ((index !== 45) && index % 15 === 0)
+                        //         result.push(array.slice(index, index + 15));
+                        //     return result;
+                        // },[]);
+                        // setList((prev)=>[...prev, ...transformedData]);
+                        // //nextPageToken = data.nextPageToken;
+                        // break;
+                        console.log(pageNumber);
+                        const temp = data.items.filter((item,index)=> index<30 &&item);
+                        setList((prev)=>[...prev, ...temp]);
                         //nextPageToken = data.nextPageToken;
                         break;
                     }

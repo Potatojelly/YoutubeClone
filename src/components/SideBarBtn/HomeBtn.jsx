@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './SideBarBtn.module.css';
+import {HiHome} from "react-icons/hi";
 
-export default function SideBarBtn({image,name}) {
+export default function HomeBtn() {
     return (
         <button className={styles.btn}>
-            {image}
-            <span className={styles.name}>{name}</span>
+            <HiHome/>
+            <span className={styles.name}>Home</span>
         </button>
     );
 }

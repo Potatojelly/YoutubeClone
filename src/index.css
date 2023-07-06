@@ -8,6 +8,12 @@
   --text-main: "Open Sans", sans-serif;
 }
 
+html.dark {
+  --color-bg: RGB(15, 15, 15);
+  --color-text: white;
+  --color-accent: rgb(105, 101, 101);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -25,6 +31,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   height:100vh;
   width: 100vw;
+  scroll-behavior: smooth;
 }
 
 code {

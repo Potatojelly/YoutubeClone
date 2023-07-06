@@ -4,7 +4,6 @@ import {AiOutlineLike, AiOutlineDislike} from "react-icons/ai";
 import getDateDiff from '../../common/getDateDiff';
 
 const Comment = ({comment},ref) => {
-    const commentRef = useRef(null);
     const {textOriginal,authorDisplayName,authorProfileImageUrl,likeCount,publishedAt} = comment.snippet.topLevelComment.snippet;
     const [commentText,setCommentText] = useState([]);
     const [shouldShowReadMoreButton,setShouldShowReadMoreButton] = useState(false);
@@ -33,7 +32,7 @@ const Comment = ({comment},ref) => {
             <div className={styles.commentContainer}>
                 <span className={styles.userName}>{authorDisplayName}</span>
                 <span className={styles.hour}>{date}</span>
-                <div ref={commentRef}>
+                <div>
                     <div className={`${styles.comment} ${show && styles.readMore}`}>
                         {commentText.map((item,index)=><p key={index}>{item}</p>)}
                     </div>

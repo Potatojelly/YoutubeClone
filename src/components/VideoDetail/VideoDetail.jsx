@@ -4,12 +4,12 @@ import Comment from '../Comment/Comment';
 import SideBar from '../SideBar/SideBar';
 import { useLocation} from 'react-router-dom';
 import {AiOutlineLike, AiOutlineDislike} from "react-icons/ai";
-import RelatedVideoCard from '../RelatedVideoCard/RelatedVideoCard';
 import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 import {v4 as uuidv4} from "uuid";
 import getDateDiff from '../../common/getDateDiff';
 import getViews from '../../common/getViews';
 import { MoonLoader } from 'react-spinners';
+import VideoSideBar from '../../VideoSideBar/VideoSideBar';
 
 export default function VideoDetail() {
     const {state: {video}} = useLocation();
@@ -20,8 +20,7 @@ export default function VideoDetail() {
     const [show,setShow] = useState(false);
     const date = getDateDiff(publishedAt);
     const views = getViews(viewCount);
-    
-    const [relatedVideoList,relatedVideoLoading, lastVideoRef] = useInfiniteScroll("related");
+
     const [commentList,commentLoading, lastCommentRef] = useInfiniteScroll("comments");
 
     useEffect(()=>{
@@ -36,85 +35,77 @@ export default function VideoDetail() {
         setShow(!show);
     };
     return (
-        <section style={{display:"flex"}}>
+        <section className={styles.videoDetailSection}>
             <SideBar/>
             <div className={styles.container}>
-            <div className={styles.videoContainer}>
-                <iframe 
-                    id="player" 
-                    type="text/html" 
-                    width="640" 
-                    height="390"
-                    src= {`http://www.youtube.com/embed/${video.id}`}
-                    frameborder="0"
-                    title="youtubeVideo"
-                />
-                <h1>
-                {title}
-                </h1>
-                <div className={styles.detailContainer}> 
-                    <div className={styles.channelContainer}>
-                        <div className={styles.channelLogo}></div>
-                        <div>
-                            <p className={styles.channelTitle}>{channelTitle}</p>
-                            <p className={styles.channelSubscriber}>subsribers</p>
+                    <div className={styles.videoContainer}>
+                        <div className={styles.iframeContainer}>
+                            <iframe 
+                                id="player" 
+                                type="text/html" 
+                                width="100%" 
+                                height="390"
+                                src= {`http://www.youtube.com/embed/${video.id}`}
+                                frameborder="0"
+                                title="youtubeVideo"
+                            />
                         </div>
-                        <button className={styles.channelSubscribeBtn}>Subscribe</button>
-                    </div>
-                    <div className={styles.menuContainer}>
-                        <div className={styles.likeBtn}>
-                            <AiOutlineLike style={{fontSize: "1.4rem", marginRight:"0.3rem"}}/>
-                            {likeCount}
+                        <h1>
+                        {title}
+                        </h1>
+                        <div className={styles.detailContainer}> 
+                            <div className={styles.channelContainer}>
+                                <div className={styles.channelLogo}></div>
+                                <div>
+                                    <p className={styles.channelTitle}>{channelTitle}</p>
+                                    <p className={styles.channelSubscriber}>subsribers</p>
+                                </div>
+                                <button className={styles.channelSubscribeBtn}>Subscribe</button>
+                            </div>
+                            <div className={styles.menuContainer}>
+                                <div className={styles.likeBtn}>
+                                    <AiOutlineLike style={{fontSize: "1.4rem", marginRight:"0.3rem"}}/>
+                                    {likeCount}
+                                </div>
+                                <div className={styles.dislikeBtn}>
+                                    <AiOutlineDislike style={{fontSize: "1.4rem"}}/>
+                                </div>
+                            </div>
                         </div>
-                        <div className={styles.dislikeBtn}>
-                            <AiOutlineDislike style={{fontSize: "1.4rem"}}/>
+                        <div className={styles.descriptionContainer}>
+                            <span className={styles.viewHour}>{`${date} • ${views}`}</span>
+                            <div>
+                                <div className={`${styles.description} ${show && styles.readMore}`}>
+                                    {text.map((item,index)=><p key={index}>{item}</p>)}
+                                </div>
+                                {shouldShowReadMoreButton && 
+                                <span className={styles.readMoreBtn} onClick={handleClick}>
+                                    {!show ? "Read more" : "Show less"}
+                                </span>}
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div className={styles.descriptionContainer}>
-                    <span className={styles.viewHour}>{`${date} • ${views}`}</span>
-                    <div>
-                        <div className={`${styles.description} ${show && styles.readMore}`}>
-                            {text.map((item,index)=><p key={index}>{item}</p>)}
+                        <div className={styles.response}>
+                            <VideoSideBar type="response"/>
                         </div>
-                        {shouldShowReadMoreButton && 
-                        <span className={styles.readMoreBtn} onClick={handleClick}>
-                            {!show ? "Read more" : "Show less"}
-                        </span>}
-                    </div>
-                </div>
-                <div className={styles.comments}>
-                    <div className={styles.commentsInfo}>
-                        <span>comments {commentCount}</span>
-                    </div>
-                    {commentList && commentList.map((item,index)=> {
-                        if(index === commentList.length - 1) {
-                            return <Comment key={uuidv4()} comment={item} ref={lastCommentRef}/>
-                        } else {
-                            return <Comment key={uuidv4()} comment={item}/>
-                        }
-                    })}
-                    {commentLoading && 
-                    <div style={{display:"flex", justifyContent:"center"}}>
-                        <MoonLoader color="rgba(255, 5, 5, 1)"/>
-                    </div>}
-                </div>
+                        <div className={styles.comments}>
+                            <div className={styles.commentsInfo}>
+                                <span>comments {commentCount}</span>
+                            </div>
+                            {commentList && commentList.map((item,index)=> {
+                                if(index === commentList.length - 1) {
+                                    return <Comment key={uuidv4()} comment={item} ref={lastCommentRef}/>
+                                } else {
+                                    return <Comment key={uuidv4()} comment={item}/>
+                                }
+                            })}
+                            {commentLoading && 
+                            <div style={{display:"flex", justifyContent:"center"}}>
+                                <MoonLoader color="rgba(255, 5, 5, 1)"/>
+                            </div>}
+                        </div>
             </div>
-            <div className={styles.sideBar}>
-                <span className={styles.sideBarTitle}>Related Videos</span>
-                <ul>
-                    {relatedVideoList && relatedVideoList.map((item,index)=> {
-                        if(index === relatedVideoList.length - 1) {
-                            return <RelatedVideoCard key={uuidv4()} video={item} ref={lastVideoRef}/>
-                        } else {
-                            return <RelatedVideoCard key={uuidv4()} video={item}/>
-                        }
-                    })}
-                    {relatedVideoLoading &&
-                    <div style={{display:"flex", justifyContent:"center"}}>
-                        <MoonLoader color="rgba(255, 5, 5, 1)"/>
-                    </div>}
-                </ul>
+            <div className={styles.default}>
+                <VideoSideBar/>
             </div>
         </div>
         </section>
