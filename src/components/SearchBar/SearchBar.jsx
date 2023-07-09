@@ -13,9 +13,10 @@ export default function SearchBar() {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        setText("");
         navigate(`videos/search/${text}`);
+        setText("");
     }
+
     return (
         <form className={styles.searchBarContainer} onSubmit={handleSubmit}>
             <input 

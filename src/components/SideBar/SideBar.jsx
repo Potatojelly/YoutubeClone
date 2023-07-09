@@ -5,7 +5,7 @@ import HomeBtn from '../SideBarBtn/HomeBtn';
 import ModeBtn from '../SideBarBtn/ModeBtn';
 
 export default function SideBar() {
-    const {click,handleToggleMode} = useContext(ToggleModeContext);
+    const {click} = useContext(ToggleModeContext);
 
     return (
         <div className={`${styles.sideBar} ${click && styles.sideBarOn}`}>

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from './components/Root/Root';
@@ -13,7 +12,7 @@ const router = createBrowserRouter([
     children: [
       {index: true, element: <Home/>},
       {path: "/videos", element: <Home/>},
-      {path: "/videos/search/:videoId", element: <VideoSearchPage/>},
+      {path: "/videos/search/:keyword", element: <VideoSearchPage/>},
       {path: "/videos/watch/:videoId", element: <VideoDetail/>},
     ]
   },

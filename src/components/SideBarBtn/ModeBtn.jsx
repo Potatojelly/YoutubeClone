@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDarkMode } from '../../contexts/DarkModeContext';
+import {useDarkMode} from '../../contexts/DarkModeContext';
 import {BsMoonFill} from "react-icons/bs";
 import {BsSunFill} from "react-icons/bs";
 

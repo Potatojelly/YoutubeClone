@@ -1,10 +1,14 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import { search } from '../api/youtube';
 
 
-export default function useInfiniteScroll(action) {
+export default function useInfiniteScroll(keyword) {
     const [list, setList] = useState([]);	
     const [loading, setLoading] = useState(false); 
     const [pageNumber, setPageNumber] = useState(1);
+    
     const observer= useRef();
     const lastElementRef = useCallback(node=> {
         if(loading) return;
@@ -13,19 +17,18 @@ export default function useInfiniteScroll(action) {
             if(entries[0].isIntersecting) {
                 setPageNumber(prev => prev + 1)
             }
-        },{threshold: 0.8});
+        },{threshold: 1});
         if(node) observer.current.observe(node);
     },[loading]);
 
     useEffect(()=> { 
         setLoading(true);
-        //fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&chart=mostPopular&maxResults=50&pageToken=${nextPageToken}&key=`)
-        if(action === "comments") {
+        if(keyword === "comments") {
             fetch("../../videos/comments.json")    
             .then(response => response.json())
             .then((data) => {
                 console.log("comment call!");
-                const temp = data.items.filter((item,index)=> index<30 &&item);
+                const temp = data.items.filter((item,index)=> index<5 &&item);
                 setList((prev)=>[...prev, ...temp]);
             })
             .finally(()=>setLoading(false));
@@ -33,7 +36,7 @@ export default function useInfiniteScroll(action) {
             fetch("../../videos/popular.json")    
             .then(response => response.json())
             .then((data) => {
-                switch (action) {
+                switch (keyword) {
                     case "main" :{
                         // const transformedData = data.items.reduce((result, value, index, array) => {
                         //     if ((index !== 45) && index % 15 === 0)

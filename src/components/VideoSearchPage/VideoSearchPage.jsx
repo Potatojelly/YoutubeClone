@@ -6,11 +6,10 @@ import VideoSearchResult from '../VideoSearchResult/VideoSearchResult';
 
 export default function VideoSearch() {
     const params = useParams();
-    console.log(params);
     return (
         <section className={styles.home}>
             <SideBar/>
-            <VideoSearchResult/>
+            <VideoSearchResult keyword={params.keyword}/>
         </section>
     );
 }

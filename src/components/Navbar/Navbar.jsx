@@ -3,11 +3,11 @@ import styles from './Navbar.module.css'
 import SearchBar from '../SearchBar/SearchBar';
 import {FaBars} from "react-icons/fa";
 import {BsYoutube} from "react-icons/bs";
-import { ToggleModeContext } from '../../contexts/ToggleModeContext';
-import { Link} from 'react-router-dom';
+import {ToggleModeContext } from '../../contexts/ToggleModeContext';
+import {Link} from 'react-router-dom';
 
 export default function Navbar() {
-    const {click,handleToggleMode} = useContext(ToggleModeContext);
+    const {handleToggleMode} = useContext(ToggleModeContext);
 
     return (
         <nav className={styles.navbar}>

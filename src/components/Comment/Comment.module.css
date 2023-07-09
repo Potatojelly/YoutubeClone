@@ -1,8 +1,11 @@
 .container {
+    position: relative;
+    box-sizing: content-box;
     margin-top: 1rem;
     width: 100%;
-    display: flex;
 
+    background-color: antiquewhite;
+    display: flex;
 }
 
 .profileImg {

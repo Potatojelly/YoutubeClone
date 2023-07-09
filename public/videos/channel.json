@@ -1,6 +1,6 @@
 {
     "kind": "youtube#channelListResponse",
-    "etag": "icgP__WW4K5Vm11RIOt8jMqrBlw",
+    "etag": "CMY_EOD2lzsM2tyFEdxY4aOBTSA",
     "pageInfo": {
         "totalResults": 1,
         "resultsPerPage": 5
@@ -8,35 +8,41 @@
     "items": [
         {
             "kind": "youtube#channel",
-            "etag": "X-Sf3EmAQyns7dUJk8HmwDkN7v0",
-            "id": "UC_x5XG1OV2P6uZZ5FSM9Ttw",
+            "etag": "BbfKV16c4eMDWCHV5Nw8ffF0ebQ",
+            "id": "UCxE5jEls-T0QtlTHT8lI1lw",
             "snippet": {
-                "title": "Google for Developers",
-                "description": "Subscribe to join a community of creative developers and learn the latest in Google technology — from AI and cloud, to mobile and web.\n\nExplore more at developers.google.com\n\n",
-                "customUrl": "@googledevelopers",
-                "publishedAt": "2007-08-23T00:34:43Z",
+                "title": "OliviaRodrigoVEVO",
+                "description": "",
+                "customUrl": "@oliviarodrigovevo",
+                "publishedAt": "2016-10-31T21:35:38Z",
                 "thumbnails": {
                     "default": {
-                        "url": "https://yt3.ggpht.com/fca_HuJ99xUxflWdex0XViC3NfctBFreIl8y4i9z411asnGTWY-Ql3MeH_ybA4kNaOjY7kyA=s88-c-k-c0x00ffffff-no-rj",
+                        "url": "https://yt3.ggpht.com/BXdOiG16ffzn4VICe5fqzorNN2D9BapjgunaiZwLsZNeb4H9zflSSpvElpP_u6ZJ7jROheRI=s88-c-k-c0x00ffffff-no-nd-rj",
                         "width": 88,
                         "height": 88
                     },
                     "medium": {
-                        "url": "https://yt3.ggpht.com/fca_HuJ99xUxflWdex0XViC3NfctBFreIl8y4i9z411asnGTWY-Ql3MeH_ybA4kNaOjY7kyA=s240-c-k-c0x00ffffff-no-rj",
+                        "url": "https://yt3.ggpht.com/BXdOiG16ffzn4VICe5fqzorNN2D9BapjgunaiZwLsZNeb4H9zflSSpvElpP_u6ZJ7jROheRI=s240-c-k-c0x00ffffff-no-nd-rj",
                         "width": 240,
                         "height": 240
                     },
                     "high": {
-                        "url": "https://yt3.ggpht.com/fca_HuJ99xUxflWdex0XViC3NfctBFreIl8y4i9z411asnGTWY-Ql3MeH_ybA4kNaOjY7kyA=s800-c-k-c0x00ffffff-no-rj",
+                        "url": "https://yt3.ggpht.com/BXdOiG16ffzn4VICe5fqzorNN2D9BapjgunaiZwLsZNeb4H9zflSSpvElpP_u6ZJ7jROheRI=s800-c-k-c0x00ffffff-no-nd-rj",
                         "width": 800,
                         "height": 800
                     }
                 },
+                "defaultLanguage": "en",
                 "localized": {
-                    "title": "Google for Developers",
-                    "description": "Subscribe to join a community of creative developers and learn the latest in Google technology — from AI and cloud, to mobile and web.\n\nExplore more at developers.google.com\n\n"
-                },
-                "country": "US"
+                    "title": "OliviaRodrigoVEVO",
+                    "description": ""
+                }
+            },
+            "statistics": {
+                "viewCount": "2191605309",
+                "subscriberCount": "182000",
+                "hiddenSubscriberCount": false,
+                "videoCount": "37"
             }
         }
     ]

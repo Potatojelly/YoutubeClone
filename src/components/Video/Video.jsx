@@ -12,10 +12,3 @@ export default function Video() {
     );
 }
 
-{/* {list && list.map((array,index)=> {
-    if(list.length === index + 1) {
-        return <VideoGrid key={uuidv4()} videos={array} ref={lastElementRef}/>
-    } else {
-        return <VideoGrid key={uuidv4()} videos={array}/>
-    }
-})} */}
