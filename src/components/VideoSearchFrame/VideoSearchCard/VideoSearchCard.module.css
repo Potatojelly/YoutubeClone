@@ -6,7 +6,7 @@
     height: 200px;
     margin: 1rem 1rem;
     cursor: pointer;
-    transition: all 250ms ease-in;
+    transition: transform 250ms ease-in;
 }
 
 .videoCard:hover {
