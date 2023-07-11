@@ -55,7 +55,7 @@ export default function VideoSearchFrame({keyword}) {
     if(isError) return <h1>{error.message}</h1>
     
     return status === "loading" ? (
-        <Loading isLoading={isLoading}/>    
+            <Loading isLoading={isLoading}/>    
     ) :  (
         <div className={styles.container}>
             <ul className={styles.videoCards}>
