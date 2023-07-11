@@ -1,9 +1,9 @@
 import React, { forwardRef, useContext } from 'react';
 import styles from './RelatedVideoCard.module.css'
-import getDateDiff from '../../common/getDateDiff';
-import getViews from '../../common/getViews';
+import getDateDiff from '../../../common/getDateDiff';
+import getViews from '../../../common/getViews';
 import { useQuery } from '@tanstack/react-query';
-import { YoutubeApiContext } from '../../contexts/YoutubeApiContext';
+import { YoutubeApiContext } from '../../../contexts/YoutubeApiContext';
 
 const RelatedVideoCard = ({videoId},ref) => {
     const youtube = useContext(YoutubeApiContext);

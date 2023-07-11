@@ -1,5 +1,5 @@
 import React, { forwardRef, useContext } from 'react';
-import styles from './VideoCard.module.css'
+import styles from './PopularVideoCard.module.css'
 import getDateDiff from '../../common/getDateDiff';
 import getViews from '../../common/getViews';
 import { useNavigate } from 'react-router-dom';

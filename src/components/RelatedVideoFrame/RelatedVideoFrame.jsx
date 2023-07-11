@@ -1,17 +1,16 @@
 import React, { useCallback, useContext, useRef } from 'react';
-import VideoSearchCard from '../VideoSearchCard/VideoSearchCard';
-import styles from './VideoSearchResult.module.css'
+import styles from './RelatedVideoFrame.module.css'
+import RelatedVideoCard from './RelatedVideoCard/RelatedVideoCard';
 import {v4 as uuidv4} from "uuid";
-import Loading from '../Loading/Loading';
-import { YoutubeApiContext } from '../../contexts/YoutubeApiContext';
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { YoutubeApiContext } from '../../contexts/YoutubeApiContext';
+import Loading from '../Loading/Loading';
 
-export default function VideoSearchResult({keyword}) {
+export default function VideoSideBar({videoId, type}) {
+
     const youtube = useContext(YoutubeApiContext);
     const {
-        data: videos,
-        status,
-        isLoading,
+        data: relatedVideos,
         isError,
         error,
         fetchNextPage,
@@ -19,8 +18,8 @@ export default function VideoSearchResult({keyword}) {
         isFetching,
         isFetchingNextPage,
     } = useInfiniteQuery(
-        [keyword],
-        ({pageParam = ""}) => youtube.searchByKeyword(keyword,pageParam), 
+        [`${videoId}RelatedVideos`],
+        ({pageParam = ""}) => youtube.searchRelatedVideo(videoId,pageParam), 
         {
             getNextPageParam : (lastPage, allPages) => {
                 return lastPage.pageToken ? lastPage.pageToken : undefined;
@@ -43,27 +42,25 @@ export default function VideoSearchResult({keyword}) {
         if(node) observer.current.observe(node);
     },[fetchNextPage, isFetching, hasNextPage]);
 
-    const videoContent = videos && videos.pages.map((page)=>{
-        return page.items.map((video,index)=>{
+    const relatedVideoContent = relatedVideos?.pages.map(page => {
+        return page.items.map((video,index) => {
             if(page.items.length === index + 1) {
-                return  <VideoSearchCard  key={uuidv4()} video={video} ref={lastElementRef}/>
+                return <RelatedVideoCard key={uuidv4()} videoId={video.id} ref={lastElementRef}/>
             }
-            return <VideoSearchCard  key={uuidv4()} video={video}/>
+            return <RelatedVideoCard key={uuidv4()} videoId={video.id}/>
         })
     })
 
-    if(isError) return <h1>{error.message}</h1>
-    
-    return status === "loading" ? (
-        <Loading isLoading={isLoading}/>    
-    ) :  (
-        <div className={styles.container}>
-            <ul className={styles.videoCards}>
-            {videoContent}
-            {isFetchingNextPage && <Loading/>}
-            {isFetching && !isFetchingNextPage && <Loading/>}
+    return (
+        <div className={`${styles.sideBar} ${type && styles.response}`}>
+            <span className={styles.sideBarTitle}>Related Videos</span>
+            <ul>
+                {isError ? <p>{error.message}</p>
+                : relatedVideoContent}
+                {isFetchingNextPage && <Loading/>}
+                {isFetching && !isFetchingNextPage && <Loading/>}
             </ul>
-        </div>
+    </div>
     );
 }
 

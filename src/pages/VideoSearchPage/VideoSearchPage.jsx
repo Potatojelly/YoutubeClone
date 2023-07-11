@@ -1,15 +1,15 @@
 import React from 'react';
 import styles from './VideoSearchPage.module.css'
 import { useParams } from 'react-router-dom';
-import SideBar from '../SideBar/SideBar';
-import VideoSearchResult from '../VideoSearchResult/VideoSearchResult';
+import VideoSearchFrame from "../../components/VideoSearchFrame/VideoSearchFrame";
+import SideBar from '../../components/SideBar/SideBar';
 
 export default function VideoSearch() {
     const params = useParams();
     return (
         <section className={styles.home}>
             <SideBar/>
-            <VideoSearchResult keyword={params.keyword}/>
+            <VideoSearchFrame keyword={params.keyword}/>
         </section>
     );
 }

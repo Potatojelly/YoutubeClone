@@ -1,6 +1,6 @@
 import React, { useCallback, useContext,useRef} from 'react';
-import styles from './VideoGrid.module.css'
-import VideoCard from '../VideoCard/VideoCard';
+import styles from './PopularVideoGrid.module.css'
+import VideoCard from '../PopularVideoCard/PopularVideoCard';
 import {v4 as uuidv4} from "uuid";
 import { useInfiniteQuery} from '@tanstack/react-query';
 import { YoutubeApiContext } from '../../contexts/YoutubeApiContext';

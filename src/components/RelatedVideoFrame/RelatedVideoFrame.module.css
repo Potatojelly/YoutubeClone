@@ -1,10 +1,12 @@
 .sideBar {
-    flex-shrink: 0;
-    width: 350px;
-    height: 830px;
+    height: 756px;
     border: 2px solid var(--color-accent);
     border-radius: 8px;
     overflow-y: auto;
+    /* border: 2px solid var(--color-accent);
+    border-radius: 8px;
+    grid-area: b; 
+    flex-shrink: 0; */
 }
 
 .response {

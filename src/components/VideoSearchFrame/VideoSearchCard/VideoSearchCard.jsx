@@ -1,10 +1,10 @@
 import React, { forwardRef, useContext } from 'react';
 import styles from './VideoSearchCard.module.css'
-import getDateDiff from '../../common/getDateDiff';
-import getViews from '../../common/getViews';
+import getDateDiff from '../../../common/getDateDiff';
 import { useQuery } from '@tanstack/react-query';
-import { YoutubeApiContext } from '../../contexts/YoutubeApiContext';
 import { useNavigate } from 'react-router-dom';
+import getViews from '../../../common/getViews';
+import { YoutubeApiContext } from '../../../contexts/YoutubeApiContext';
 
 const VideoSearchCard = ({video},ref) => {
     const youtube = useContext(YoutubeApiContext);

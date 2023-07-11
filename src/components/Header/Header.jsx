@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import styles from './Navbar.module.css'
-import SearchBar from '../SearchBar/SearchBar';
+import styles from './Header.module.css'
+import SearchBar from './SearchBar/SearchBar';
 import {FaBars} from "react-icons/fa";
 import {BsYoutube} from "react-icons/bs";
 import {ToggleModeContext } from '../../contexts/ToggleModeContext';

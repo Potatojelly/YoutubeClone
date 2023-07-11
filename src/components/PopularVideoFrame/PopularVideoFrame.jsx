@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './Video.module.css'
-import VideoGrid from '../VideoGrid/VideoGrid';
+import styles from './PopularVideoFrame.module.css'
+import VideoGrid from '../PopularVideoGrid/PopularVideoGrid';
 
 export default function Video() {
     return (

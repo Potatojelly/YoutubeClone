@@ -1,14 +1,14 @@
 import React from 'react';
-import SideBar from '../SideBar/SideBar';
+import SideBar from '../../components/SideBar/SideBar';
 import styles from './Home.module.css'
-import Video from "../Video/Video";
+import PopularVideoFrame from "../../components/PopularVideoFrame/PopularVideoFrame";
 
 
 export default function Home() {
     return (
         <section className={styles.home}>
             <SideBar/>
-            <Video/>
+            <PopularVideoFrame/>
         </section>
     );
 }

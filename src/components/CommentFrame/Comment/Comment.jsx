@@ -1,9 +1,9 @@
 import React, { forwardRef, useEffect, useState } from 'react';
 import styles from './Comment.module.css'
 import {AiOutlineLike, AiOutlineDislike} from "react-icons/ai";
-import getDateDiff from '../../common/getDateDiff';
+import getDateDiff from '../../../common/getDateDiff';
 
-const Comment = ({comment},ref) => {
+const Comment = ({comment,check},ref) => {
     const {textOriginal,authorDisplayName,authorProfileImageUrl,likeCount,publishedAt} = comment.snippet.topLevelComment.snippet;
     const [commentText,setCommentText] = useState([]);
     const [shouldShowReadMoreButton,setShouldShowReadMoreButton] = useState(false);
@@ -22,15 +22,12 @@ const Comment = ({comment},ref) => {
         setShouldShowReadMoreButton(textOriginal.split('\n').length >= 5);
     },[textOriginal]);
 
-
     return (
-        <div className={styles.test} ref={ref}>
-            <div className={styles.container} >
+            <div className={styles.container} ref={ref}>
                 <img 
                     src={authorProfileImageUrl}
                     alt="userProfile" 
                     className={styles.profileImg}
-                    style={{objectFit:"contain"}}
                 /> 
                 <div className={styles.commentContainer}>
                     <span className={styles.userName}>{authorDisplayName}</span>
@@ -43,6 +40,7 @@ const Comment = ({comment},ref) => {
                         <span className={styles.readMoreBtn} onClick={handleClick}>
                             {!show ? "Read more" : "Show less"}
                         </span>}
+                        {check && <div>{check}</div>}
                     </div>
                     <div className={styles.btnContainer}>
                         <button className={styles.likeBtn}><AiOutlineLike style={{fontSize:"1.2rem"}}/> <span>{likeCount}</span></button>
@@ -50,9 +48,7 @@ const Comment = ({comment},ref) => {
                     </div>
                 </div>
             </div>
-        </div>
     );
 }
 
 export default forwardRef(Comment);
-

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Navbar from '../Navbar/Navbar';
+import Header from '../Header/Header';
 import styles from './Root.module.css';
 import ToggleModeProvider from '../../contexts/ToggleModeContext';
 import { DarkModeProvider } from '../../contexts/DarkModeContext';
@@ -13,7 +13,7 @@ export default function Root() {
         <div className={styles.root}>
             <DarkModeProvider>
                 <ToggleModeProvider>
-                    <Navbar/>
+                    <Header/>
                     <YoutubeApiProvider>
                         <QueryClientProvider client={queryClient}>
                             <Outlet/>
