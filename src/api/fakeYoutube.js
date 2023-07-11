@@ -1,9 +1,6 @@
 import axios from "axios";
 
 export default class FakeYoutube {
-    constructor() {
-
-    }
 
     async searchPopular(nextPageToken) {
         return this.#getPopular(nextPageToken);
