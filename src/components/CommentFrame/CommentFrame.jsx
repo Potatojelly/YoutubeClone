@@ -42,17 +42,14 @@ export default function CommentFrame({video}) {
                 console.log(node);
                 fetchNextPage();
             }
-        },{rootMargin:"0px 0px -160px 0px",threshold:1});
+        },{rootMargin:"0px 0px -160px 0px"});
         if(node) observer.current.observe(node);
     },[fetchNextPage, isFetching, hasNextPage]);
 
     const commentContent = comments?.pages.map((page,pageIndex) => {
         return page.items.map((comment,index) => {
             if((comments.pages.length === pageIndex + 1) && page.items.length === index + 2) {
-                return <Comment key={uuidv4()} comment={comment} check={comments.pages.length} ref={lastElementRef}/>
-                    
-            } else if(page.items.length === index + 2) {
-                return <Comment key={uuidv4()} comment={comment} check={pageIndex+1} ref={lastElementRef}/>
+                return <Comment key={uuidv4()} comment={comment} ref={lastElementRef}/>
             }
             return <Comment key={uuidv4()} comment={comment}/>
         })

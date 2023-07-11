@@ -1,9 +1,8 @@
 import React from 'react';
-import {useDarkMode} from '../../contexts/DarkModeContext';
 import {BsMoonFill} from "react-icons/bs";
 import {BsSunFill} from "react-icons/bs";
-
 import styles from "./SideBarBtn.module.css";
+import { useDarkMode } from '../../../contexts/DarkModeContext';
 
 export default function ModeBtn() {
     const {darkMode, toggleDarkMode} = useDarkMode();

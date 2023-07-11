@@ -6,7 +6,7 @@ import RelatedVideoFrame from '../../components/RelatedVideoFrame/RelatedVideoFr
 import VideoWatchFrame from '../../components/VideoWatchFrame/VideoWatchFrame';
 import CommentFrame from '../../components/CommentFrame/CommentFrame';
 
-export default function VideoDetail() {
+export default function VideoWatchPage() {
     const {state: {video, channel}} = useLocation();
 
     const responsiveVideoSideBar = (<div className={styles.responsiveVideoSideBar}>

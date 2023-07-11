@@ -6,7 +6,7 @@ import {BsYoutube} from "react-icons/bs";
 import {ToggleModeContext } from '../../contexts/ToggleModeContext';
 import {Link} from 'react-router-dom';
 
-export default function Navbar() {
+export default function Header() {
     const {handleToggleMode} = useContext(ToggleModeContext);
 
     return (

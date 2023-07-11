@@ -1,13 +1,14 @@
 import React, { forwardRef, useContext } from 'react';
 import styles from './PopularVideoCard.module.css'
-import getDateDiff from '../../common/getDateDiff';
-import getViews from '../../common/getViews';
+
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { YoutubeApiContext } from '../../contexts/YoutubeApiContext';
+import getDateDiff from '../../../common/getDateDiff';
+import getViews from '../../../common/getViews';
+import { YoutubeApiContext } from '../../../contexts/YoutubeApiContext';
 
 
-const VideoCard = ({video},ref) => {
+const PopularVideoCard = ({video},ref) => {
     const {id} = video.id;
     const {title,channelTitle,publishedAt,channelId} = video.snippet;
     const {url} = video.snippet.thumbnails.high;
@@ -45,6 +46,6 @@ const VideoCard = ({video},ref) => {
     );
 };
 
-export default forwardRef(VideoCard);
+export default forwardRef(PopularVideoCard);
 
 

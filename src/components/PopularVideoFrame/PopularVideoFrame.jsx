@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './PopularVideoFrame.module.css'
-import VideoGrid from '../PopularVideoGrid/PopularVideoGrid';
+import PopularVideoGrid from './PopularVideoGrid/PopularVideoGrid';
 
-export default function Video() {
+export default function PopularVideoFrame() {
     return (
         <div className={styles.videoSection}>
             <ul className={styles.videoContainer}>
-                {<VideoGrid/>}
+                {<PopularVideoGrid/>}
             </ul>
         </div>
     );

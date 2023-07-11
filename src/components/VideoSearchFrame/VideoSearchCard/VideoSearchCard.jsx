@@ -34,6 +34,7 @@ const VideoSearchCard = ({video},ref) => {
     const navigate = useNavigate();
 
     const watchVideo = () => {
+        const video = detailedVideo[0];
         navigate(`/videos/watch/${videoId}`, {state: {video, channel}});
     }
 

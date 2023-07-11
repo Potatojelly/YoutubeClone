@@ -3,11 +3,11 @@ import styles from './PopularVideoGrid.module.css'
 import VideoCard from '../PopularVideoCard/PopularVideoCard';
 import {v4 as uuidv4} from "uuid";
 import { useInfiniteQuery} from '@tanstack/react-query';
-import { YoutubeApiContext } from '../../contexts/YoutubeApiContext';
-import Loading from '../Loading/Loading';
+import { YoutubeApiContext } from '../../../contexts/YoutubeApiContext';
+import Loading from '../../Loading/Loading';
 
 
-export default function VideoGrid() {
+export default function PopularVideoGrid() {
     const youtube = useContext(YoutubeApiContext);
     const {
         data: videos,

@@ -6,7 +6,7 @@ import Loading from '../Loading/Loading';
 import { YoutubeApiContext } from '../../contexts/YoutubeApiContext';
 import { useInfiniteQuery } from '@tanstack/react-query';
 
-export default function VideoSearchResult({keyword}) {
+export default function VideoSearchFrame({keyword}) {
     const youtube = useContext(YoutubeApiContext);
     const {
         data: videos,

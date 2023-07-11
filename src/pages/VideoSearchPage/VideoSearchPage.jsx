@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import VideoSearchFrame from "../../components/VideoSearchFrame/VideoSearchFrame";
 import SideBar from '../../components/SideBar/SideBar';
 
-export default function VideoSearch() {
+export default function VideoSearchPage() {
     const params = useParams();
     return (
         <section className={styles.home}>

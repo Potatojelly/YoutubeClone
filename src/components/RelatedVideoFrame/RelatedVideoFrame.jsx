@@ -6,7 +6,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { YoutubeApiContext } from '../../contexts/YoutubeApiContext';
 import Loading from '../Loading/Loading';
 
-export default function VideoSideBar({videoId, type}) {
+export default function RelatedVideoFrame({videoId, type}) {
 
     const youtube = useContext(YoutubeApiContext);
     const {

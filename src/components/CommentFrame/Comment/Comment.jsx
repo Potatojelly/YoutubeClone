@@ -3,7 +3,7 @@ import styles from './Comment.module.css'
 import {AiOutlineLike, AiOutlineDislike} from "react-icons/ai";
 import getDateDiff from '../../../common/getDateDiff';
 
-const Comment = ({comment,check},ref) => {
+const Comment = ({comment},ref) => {
     const {textOriginal,authorDisplayName,authorProfileImageUrl,likeCount,publishedAt} = comment.snippet.topLevelComment.snippet;
     const [commentText,setCommentText] = useState([]);
     const [shouldShowReadMoreButton,setShouldShowReadMoreButton] = useState(false);
@@ -40,7 +40,6 @@ const Comment = ({comment,check},ref) => {
                         <span className={styles.readMoreBtn} onClick={handleClick}>
                             {!show ? "Read more" : "Show less"}
                         </span>}
-                        {check && <div>{check}</div>}
                     </div>
                     <div className={styles.btnContainer}>
                         <button className={styles.likeBtn}><AiOutlineLike style={{fontSize:"1.2rem"}}/> <span>{likeCount}</span></button>
