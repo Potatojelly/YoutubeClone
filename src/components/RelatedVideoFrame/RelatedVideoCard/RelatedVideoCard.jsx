@@ -4,26 +4,42 @@ import getDateDiff from '../../../common/getDateDiff';
 import getViews from '../../../common/getViews';
 import { useQuery } from '@tanstack/react-query';
 import { YoutubeApiContext } from '../../../contexts/YoutubeApiContext';
+import { useNavigate } from 'react-router-dom';
 
 const RelatedVideoCard = ({videoId},ref) => {
     const youtube = useContext(YoutubeApiContext);
-    const {data: video} = useQuery([`${videoId}RelatedVideo`],() => youtube.searchByVideoId(videoId),
+    const navigate = useNavigate();
+    const {data: detailedVideo} = useQuery([`${videoId}RelatedVideo`],() => youtube.searchByVideoId(videoId),
     {
         staleTime: 1000 * 60 * 5,
         retry: false,
         refetchOnWindowFocus: false,
     }
     );
-    const title = video && video[0].snippet.title;
-    const channelTitle = video && video[0].snippet.channelTitle;
-    const publishedAt = video && video[0].snippet.publishedAt;
-    const url = video && video[0].snippet.thumbnails.high.url;
-    const viewCount = video && video[0].statistics.viewCount;
+    const title = detailedVideo && detailedVideo[0].snippet.title;
+    const channelTitle = detailedVideo && detailedVideo[0].snippet.channelTitle;
+    const channelId = detailedVideo && detailedVideo[0].snippet.channelId;
+    const publishedAt = detailedVideo && detailedVideo[0].snippet.publishedAt;
+    const url = detailedVideo && detailedVideo[0].snippet.thumbnails.high.url;
+    const viewCount = detailedVideo && detailedVideo[0].statistics.viewCount;
     const date = getDateDiff(publishedAt);
     const views = getViews(viewCount);
 
-    const content = video && (
-        <li className={styles.videoCard} ref={ref}>
+    const {data: channel} = useQuery([{channelId}],() => youtube.searchChannel(channelId),
+    {
+        staleTime: 1000 * 60 * 5,
+        retry: false,
+        refetchOnWindowFocus: false,
+    }
+    );
+
+    const watchVideo = () => {
+        const video = detailedVideo[0];
+        navigate(`/videos/watch/${videoId}`, {state: {video, channel}});
+    }
+
+    const content = detailedVideo && (
+        <li className={styles.videoCard} onClick={watchVideo} ref={ref}>
             <img src={url} alt ="video" className={styles.videoImg}/>
             <div className={styles.videoDetails}>
                 <span className={styles.title}>{title}</span>

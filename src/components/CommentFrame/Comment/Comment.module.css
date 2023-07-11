@@ -55,13 +55,11 @@
 }
 
 .likeBtn {
-    width: 55px;
+    width: 30px;
     height:25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: transparent;
     color: var(--color-text);
+    border-radius: 100%;
 }
 
 .dislikeBtn {
@@ -69,4 +67,5 @@
     height:25px;
     background-color: transparent;
     color: var(--color-text);
+    border-radius: 100%;
 }

@@ -42,7 +42,10 @@ const Comment = ({comment},ref) => {
                         </span>}
                     </div>
                     <div className={styles.btnContainer}>
-                        <button className={styles.likeBtn}><AiOutlineLike style={{fontSize:"1.2rem"}}/> <span>{likeCount}</span></button>
+                        <div style={{display:"flex",justifyContent:"center", alignItems:"center"}}>
+                            <button className={styles.likeBtn}><AiOutlineLike style={{fontSize:"1.2rem"}}/></button>
+                            <span style={{fontSize:"0.9rem"}} >{likeCount}</span>
+                        </div>
                         <button className={styles.dislikeBtn}><AiOutlineDislike style={{fontSize:"1.2rem"}}/></button>
                     </div>
                 </div>

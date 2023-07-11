@@ -4,7 +4,7 @@ import FakeYoutube from '../api/fakeYoutube';
 
 export const YoutubeApiContext = createContext();
 
-const youtube = new Youtube();
+const youtube = new FakeYoutube();
 
 export function YoutubeApiProvider({children}) {
     return <YoutubeApiContext.Provider value={youtube}>

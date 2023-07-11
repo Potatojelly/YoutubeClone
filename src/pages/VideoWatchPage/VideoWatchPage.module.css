@@ -28,16 +28,6 @@
     display: none;
 }
 
-.readMoreBtn {
-    font-weight: bold;
-    color: black;
-    background-color: transparent;
-    font-size: 0.8rem;
-    text-decoration:underline;
-    cursor: pointer;
-    color: var(--color-text);
-}
-
 .readMore {
     -webkit-line-clamp: initial;
 }

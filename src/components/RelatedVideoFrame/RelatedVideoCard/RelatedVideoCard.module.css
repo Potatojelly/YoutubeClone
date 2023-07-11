@@ -1,6 +1,12 @@
 .videoCard {
     display: flex;
     margin: 1rem 1rem;
+    transition: all 250ms ease-in;
+}
+
+.videoCard:hover {
+    transform: scale(1.01);
+    cursor: pointer;
 }
 
 .videoImg {

@@ -38,8 +38,6 @@ export default function CommentFrame({video}) {
         if(observer.current)  observer.current.disconnect();
         observer.current = new IntersectionObserver(async entries=>{
             if(entries[0].isIntersecting && hasNextPage) {
-                console.log("Fetching!");
-                console.log(node);
                 fetchNextPage();
             }
         },{rootMargin:"0px 0px -160px 0px"});
