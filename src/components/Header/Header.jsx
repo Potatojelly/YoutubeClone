@@ -18,7 +18,7 @@ export default function Header() {
                 <Link to="/" style={{textDecoration:"none"}}>
                     <div className={styles.logo}>
                         <BsYoutube style={{color: "red", fontSize: "1.8rem", marginRight: "0.2rem" }}/>
-                        YouTube
+                        YoonTube
                     </div>
                 </Link>
             </div>
