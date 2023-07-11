@@ -39,7 +39,7 @@ export default function VideoWatchFrame({video, channel}) {
                         type="text/html" 
                         width="100%" 
                         height="390"
-                        src= {`http://www.youtube.com/embed/${videoId}`}
+                        src= {`https://www.youtube.com/embed/${videoId}`}
                         border="0"
                         title="youtubeVideo"
                     />
