@@ -9348,6 +9348,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"numeral@npm:^2.0.6":
+  version: 2.0.6
+  resolution: "numeral@npm:2.0.6"
+  checksum: 89f011116539692bf53fde380adeb0579623d00f782703c71c0062d4a8686770c404a041ff4eef454de53925a9f75bba1fa52726057b13d40473f707730b07c2
+  languageName: node
+  linkType: hard
+
 "nwsapi@npm:^2.2.0":
   version: 2.2.5
   resolution: "nwsapi@npm:2.2.5"
@@ -12447,6 +12454,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"timeago.js@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "timeago.js@npm:4.0.2"
+  checksum: c785a06988717cb5a00bb96b00ebaa56e83f4b5ed5d87c4c3931fb1bb2591a0e13a7ddc4b6c12c6ee7de64b440ed903c7bd4e0edddb37aade9bfc9ceab5d0db3
+  languageName: node
+  linkType: hard
+
 "tmpl@npm:1.0.5":
   version: 1.0.5
   resolution: "tmpl@npm:1.0.5"
@@ -13551,6 +13565,7 @@ __metadata:
     "@testing-library/user-event": ^13.2.1
     axios: ^1.4.0
     eslint-config-react-app: ^7.0.1
+    numeral: ^2.0.6
     react: ^18.2.0
     react-dom: ^18.2.0
     react-icons: ^4.10.1
@@ -13558,6 +13573,7 @@ __metadata:
     react-router-dom: ^6.14.1
     react-scripts: 5.0.1
     react-spinners: ^0.13.8
+    timeago.js: ^4.0.2
     web-vitals: ^2.1.0
   languageName: unknown
   linkType: soft

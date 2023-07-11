@@ -1,14 +1,14 @@
 import React, { forwardRef, useEffect, useState } from 'react';
 import styles from './Comment.module.css'
 import {AiOutlineLike, AiOutlineDislike} from "react-icons/ai";
-import getDateDiff from '../../../common/getDateDiff';
+import {format} from "timeago.js";
 
 const Comment = ({comment},ref) => {
     const {textOriginal,authorDisplayName,authorProfileImageUrl,likeCount,publishedAt} = comment.snippet.topLevelComment.snippet;
     const [commentText,setCommentText] = useState([]);
     const [shouldShowReadMoreButton,setShouldShowReadMoreButton] = useState(false);
     const [show,setShow] = useState(false);
-    const date = getDateDiff(publishedAt);
+    const date = format(publishedAt);
 
     const handleClick = () => {
         setShow(!show);

@@ -1,10 +1,10 @@
 import React, { forwardRef, useContext } from 'react';
 import styles from './RelatedVideoCard.module.css'
-import getDateDiff from '../../../common/getDateDiff';
-import getViews from '../../../common/getViews';
+import {format} from "timeago.js";
 import { useQuery } from '@tanstack/react-query';
 import { YoutubeApiContext } from '../../../contexts/YoutubeApiContext';
 import { useNavigate } from 'react-router-dom';
+import changeUnit from '../../../common/changeFormat';
 
 const RelatedVideoCard = ({videoId},ref) => {
     const youtube = useContext(YoutubeApiContext);
@@ -22,8 +22,8 @@ const RelatedVideoCard = ({videoId},ref) => {
     const publishedAt = detailedVideo && detailedVideo[0].snippet.publishedAt;
     const url = detailedVideo && detailedVideo[0].snippet.thumbnails.high.url;
     const viewCount = detailedVideo && detailedVideo[0].statistics.viewCount;
-    const date = getDateDiff(publishedAt);
-    const views = getViews(viewCount);
+    const date = format(publishedAt);
+    const views = changeUnit(viewCount);
 
     const {data: channel} = useQuery([{channelId}],() => youtube.searchChannel(channelId),
     {

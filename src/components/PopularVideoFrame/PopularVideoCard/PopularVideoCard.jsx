@@ -1,11 +1,10 @@
 import React, { forwardRef, useContext } from 'react';
 import styles from './PopularVideoCard.module.css'
-
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import getDateDiff from '../../../common/getDateDiff';
-import getViews from '../../../common/getViews';
+import {format} from "timeago.js";
 import { YoutubeApiContext } from '../../../contexts/YoutubeApiContext';
+import changeUnit from '../../../common/changeFormat';
 
 
 const PopularVideoCard = ({video},ref) => {
@@ -13,8 +12,8 @@ const PopularVideoCard = ({video},ref) => {
     const {title,channelTitle,publishedAt,channelId} = video.snippet;
     const {url} = video.snippet.thumbnails.high;
     const {viewCount} = video.statistics;
-    const date = getDateDiff(publishedAt);
-    const views = getViews(viewCount);
+    const date = format(publishedAt)
+    const views = changeUnit(viewCount);
     const youtube = useContext(YoutubeApiContext);
     const navigate = useNavigate();
 

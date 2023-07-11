@@ -5,6 +5,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import Loading from '../Loading/Loading';
 import Comment from './Comment/Comment';
 import {v4 as uuidv4} from "uuid";
+import { addNumFormat } from '../../common/changeFormat';
 
 export default function CommentFrame({video}) {
     const videoId = video.id;
@@ -56,7 +57,7 @@ export default function CommentFrame({video}) {
     return (
         <div className={styles.comments}>
             <div className={styles.commentsInfo}>
-                <span>Comments {commentCount}</span>
+                <span>Comments {addNumFormat(commentCount)}</span>
             </div>
             {isError ? <p>{error.message}</p>
             : commentContent}

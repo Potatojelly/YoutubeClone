@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styles from './VideoWatchFrame.module.css'
 import {AiOutlineLike, AiOutlineDislike} from "react-icons/ai";
-import getDateDiff from '../../common/getDateDiff';
-import getViews from '../../common/getViews';
+import {format} from "timeago.js";
+import changeUnit from '../../common/changeFormat';
+import { addNumFormat } from '../../common/changeFormat';
+import { getDate } from '../../common/changeFormat';
 
 export default function VideoWatchFrame({video, channel}) {
     const videoId = video.id;
@@ -12,26 +14,20 @@ export default function VideoWatchFrame({video, channel}) {
     const channelThumbnail = channel[0].snippet.thumbnails.default.url;
 
     const [text,setText] = useState([]);
-    const [shouldShowReadMoreButton,setShouldShowReadMoreButton] = useState(false);
     const [readMore,setReadMore] = useState(false);
 
-    const date = getDateDiff(publishedAt);
-    const views = getViews(viewCount);
+    const date = format(publishedAt);
+    const views = changeUnit(viewCount);
 
     useEffect(()=>{
         setText(description.split('\n'));
-    },[description]);
-
-    useEffect(()=>{
-        setShouldShowReadMoreButton(description.split('\n').length >= 2);
     },[description]);
 
     const handleReadMore = () => {
         setReadMore(!readMore);
     };
 
-    const showReadMoreButton = (shouldShowReadMoreButton && 
-                                <span className={styles.readMoreBtn} onClick={handleReadMore}>
+    const showReadMoreButton = (<span className={styles.readMoreBtn} onClick={handleReadMore}>
                                 {!readMore ? "Read more" : "Show less"}
                                 </span>)
 
@@ -56,14 +52,14 @@ export default function VideoWatchFrame({video, channel}) {
                         <img src={channelThumbnail} alt={"channelThumbnail"} className={styles.channelLogo}></img>
                         <div>
                             <p className={styles.channelTitle}>{channelTitle}</p>
-                            <p className={styles.channelSubscriber}>{subscriberCount} subscribers</p>
+                            <p className={styles.channelSubscriber}>{changeUnit(subscriberCount)} subscribers</p>
                         </div>
                         <button className={styles.channelSubscribeBtn}>Subscribe</button>
                     </div>
                     <div className={styles.menuContainer}>
                         <div className={styles.likeBtn}>
                             <AiOutlineLike style={{fontSize: "1.4rem", marginRight:"0.3rem"}}/>
-                            {likeCount}
+                            {changeUnit(likeCount)}
                         </div>
                         <div className={styles.dislikeBtn}>
                             <AiOutlineDislike style={{fontSize: "1.4rem"}}/>
@@ -71,7 +67,9 @@ export default function VideoWatchFrame({video, channel}) {
                     </div>
                 </div>
                 <div className={styles.descriptionContainer}>
-                    <span className={styles.viewHour}>{`${date} • ${views}`}</span>
+                    {readMore ? 
+                    <span className={styles.viewHour}>{`${getDate(publishedAt)} • ${addNumFormat(viewCount)} views`}</span> 
+                    : <span className={styles.viewHour}>{`${date} • ${views} views`}</span>}
                     <div>
                         <div className={`${styles.description} ${readMore && styles.readMore}`}>
                             {text.map((item,index)=><p key={index}>{item}</p>)}

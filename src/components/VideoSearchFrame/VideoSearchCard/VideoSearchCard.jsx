@@ -1,10 +1,10 @@
 import React, { forwardRef, useContext } from 'react';
 import styles from './VideoSearchCard.module.css'
-import getDateDiff from '../../../common/getDateDiff';
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import getViews from '../../../common/getViews';
+import {format} from "timeago.js";
 import { YoutubeApiContext } from '../../../contexts/YoutubeApiContext';
+import changeUnit from '../../../common/changeFormat';
 
 const VideoSearchCard = ({video},ref) => {
     const youtube = useContext(YoutubeApiContext);
@@ -29,8 +29,8 @@ const VideoSearchCard = ({video},ref) => {
     }
     );
     const viewCount = detailedVideo && detailedVideo[0].statistics.viewCount;
-    const date = getDateDiff(publishedAt);
-    const views = getViews(viewCount);
+    const date = format(publishedAt);
+    const views = changeUnit(viewCount);
     const navigate = useNavigate();
 
     const watchVideo = () => {
