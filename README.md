@@ -6,7 +6,7 @@ ___Please note that the functionalities for signing in, subscribing, liking and 
 
 ## Table of Contents
 
-1. [Screen Shots/Website](#screenshot)
+1. [Screen Shots/Demo](#screenshot)
 2. [Installation](#installation)
 3. [Usage](#usage)
 4. [Technology Stack](#tech-stack)
@@ -27,7 +27,7 @@ ___Please note that the functionalities for signing in, subscribing, liking and 
 ![comments](https://github.com/Potatojelly/YoutubeClone/assets/108857524/f5c8e9ce-f92e-43de-8e74-fbe3f3789997)
 
 
-Website:https://sunny-cranachan-aeae8a.netlify.app
+Demo:https://sunny-cranachan-aeae8a.netlify.app
 
 ___Please note that YouTube API Token is limited to 10,000 per day. If you keep receiving 403 errors, YouTube API Token has been used up___
 
